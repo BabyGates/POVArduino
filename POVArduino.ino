@@ -1,4 +1,3 @@
-
 #include <APA102/APA102.h>
 #include <FastGPIO/FastGPIO.h>
 #define APA102_USE_FAST_GPIO
@@ -6,7 +5,7 @@
 #include <string.h>
 const int dataPin = 11;
 const int clockPin = 12;
-const int ledCount = 144;
+const int ledCount = 120;
 APA102<dataPin, clockPin> ledStrip;
 String mainString;
 String redString;
@@ -63,7 +62,7 @@ void loop()
 					greenString += Serial.read() - 48;
 					greenString += Serial.read() - 48;
 					greenString += Serial.read() - 48;
-					char read4 = Serial.read();	
+					char read4 = Serial.read();
 					if (read4 == 'b') {
 						blueString = "";
 						blueString += Serial.read() - 48;
@@ -77,14 +76,14 @@ void loop()
 							fpsString += Serial.read() - 48;
 							char read6 = Serial.read();
 							mainString = "";
-							while (read6 != '\0') {
+							while (read6 != '0') {
 								mainString += read6;
 								read6 = Serial.read();
 							}
 							show();
 							for (int i = 0; i < mainString.length(); i++) {
 								populateBytes(mainString[i], i);
-								printBytes(i);
+								//printBytes(i);
 							}
 						}
 					}
@@ -93,7 +92,13 @@ void loop()
 		}
 	}
 
+	/*ledStrip.startFrame();
+	for (int i = 0; i < ledCount; i++) {
+		ledStrip.sendColor(255, 255, 255);
+	}
+	ledStrip.startFrame();*/
 
+	populateBytes('a', 0);
 	//main loop
 	//start symbol for reading
 	ledStrip.startFrame();
@@ -106,13 +111,178 @@ void loop()
 		}
 	}
 	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col1[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col1[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col2[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col2[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col3[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col3[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col4[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col4[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col5[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col5[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col6[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col6[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col7[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col7[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col8[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col8[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(10);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col9[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col9[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col10[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col10[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col11[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col11[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col12[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col12[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col13[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col13[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col14[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col14[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
+	delay(5);
+	ledStrip.startFrame();
+	for (int i = 0; i < ledCount / 2; i++) {
+		if (char0_col15[i] == '0') {
+			ledStrip.sendColor(0, 0, 0, 0);
+		}
+		else if (char0_col15[i] == '1') {
+			ledStrip.sendColor(255, 0, 255, 5);
+		}
+	}
+	ledStrip.endFrame(ledCount);
 	//full revolution delay
-	delay(100);
+	delay(50);
 
 }
 void printBytes(int index) {
 	if (index == 0) {
-		for (int i = 0; i < ledCount/2; i++) {
+		for (int i = 0; i < ledCount / 2; i++) {
 			Serial.print(char0_col0[i]);
 			Serial.print(char0_col1[i]);
 			Serial.print(char0_col2[i]);
@@ -143,7 +313,7 @@ void show() {
 void populateBytes(char c, int i) {
 	if (c == 'a') {
 		if (i == 0) {
-			for (int i = 0; i < ledCount/2; i++) {
+			for (int i = 0; i < ledCount / 2; i++) {
 				char0_col0[i] = '0';
 				char0_col1[i] = '0';
 			}
@@ -151,13 +321,13 @@ void populateBytes(char c, int i) {
 				if (i < 29 || i > 47) {
 					char0_col2[i] = '0';
 				}
-				else{ char0_col2[i] = '1'; }
+				else { char0_col2[i] = '1'; }
 			}
 			for (int i = 0; i < ledCount / 2; i++) {
 				if (i < 27 || i > 47) {
 					char0_col3[i] = '0';
 				}
-				else { 
+				else {
 					char0_col3[i] = '1';
 				}
 			}
