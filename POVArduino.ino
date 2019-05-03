@@ -1,7 +1,7 @@
 
 #include <APA102/APA102.h>
-//#include <FastGPIO/FastGPIO.h>
-//#define APA102_USE_FAST_GPIO
+#include <FastGPIO/FastGPIO.h>
+#define APA102_USE_FAST_GPIO
 
 #include <string.h>
 const int ledCountVert = 120;
